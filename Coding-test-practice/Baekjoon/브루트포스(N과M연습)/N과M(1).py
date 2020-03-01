@@ -1,3 +1,5 @@
+# 미해결
+
 n, m = map(int, input().split())
 
 for l in range(m):
