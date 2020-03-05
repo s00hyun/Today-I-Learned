@@ -24,15 +24,23 @@ for j in range(n):
         idx_list[idx] = 2
     #print(idx_list)
     sum_arr.append( A[idx_list[0]]*A[idx_list[1]]*A[idx_list[2]]*A[idx_list[3]] )
+    ans += sum_arr[j]
 
 # Point: 각 Ai는 4번씩만 계산식에 포함된다.
 for q_ in Q:
     i = q_-1
-    i_list = [i, i-1, i-2, i-3]
+    #i_list = [i, i-1, i-2, i-3]
 
-    for j in i_list:
-        if j<0:
-            j += n
-        sum_arr[j] *= -1
-        
-    print(sum(sum_arr))
+    for j in range(4):#i_list:
+        ans -= sum_arr[i]
+        sum_arr[i] *= -1
+        ans += sum_arr[i]
+        i -= 1
+        if i<0:
+            i += n
+
+        #if j<0:
+        #    j += n
+        #sum_arr[j] *= -1
+    print(ans)   
+    #print(sum(sum_arr))
