@@ -17,10 +17,10 @@ def bfs():
             x1 = x+d[0]
             y1 = y+d[1]
             if (0<=x1<n and 0<=y1<m) and check[x1][y1] == -1:
-                if g[x1][y1] == 0:
+                if g[x1][y1] == 0:  # 안 부수고 이동 가능
                     check[x1][y1] = check[x][y]
                     q.appendleft((x1,y1))
-                elif g[x1][y1] == 1:
+                elif g[x1][y1] == 1:  # 벽 부숴야 이동 가능
                     check[x1][y1] = check[x][y] + 1
                     q.append((x1,y1))
 
