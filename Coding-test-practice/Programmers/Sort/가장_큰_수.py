@@ -7,14 +7,16 @@
 # 이 때, 문자열 비교 순서는 좌-> 우 !!
 # '333' > '303030' 
 
-def solution(numbers):    
-    answer=''
-    numbers = list(map(str, numbers))  # 정수 리스트를 문자열 리스트로 변환
-    numbers = sorted(numbers, key=lambda x: x*3, reverse=True)
-    answer = answer.join(numbers)
-    
-    # 주의
-    if int(answer) == 0 and len(answer) > 1 :
-        answer = '0'
-        
+
+def solution(numbers):
+    numbers = sorted(map(str, numbers), key=lambda x: x*3, reverse=True)
+    #print(numbers)
+    answer = ''
+
+    for num in numbers:
+        answer += num
+
+    if int(answer) == 0:
+        return '0'
+
     return answer
