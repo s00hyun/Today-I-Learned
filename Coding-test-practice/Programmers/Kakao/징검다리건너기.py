@@ -1,6 +1,3 @@
-# 실패
-
-
 def solution(stones, k):
     # 돌다리를 건널 수 있는 놈들의 최댓값(m)을 이분탐색으로 찍는다
     left = 0
