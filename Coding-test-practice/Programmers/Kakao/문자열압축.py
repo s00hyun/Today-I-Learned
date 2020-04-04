@@ -1,6 +1,8 @@
 # 실패 (66.0 / 100.0)
 # 2, 6, 11, 12, 14, 15, 17, 26, 27, 28
 
+import math
+
 
 def solution(s):
     answer = 1001
@@ -10,8 +12,9 @@ def solution(s):
     sliced_list = []
     for i in range(1, slen + 1): #(slen // 2) + 2):  # 자를 길이
         temp = []
-        for j in range(0, slen // i):
-            if j == (slen // i) - 1:
+        num_of_slices = math.ceil(slen / i)
+        for j in range(num_of_slices):
+            if j == num_of_slices - 1:
                 temp.append(s[i*j :])
             else:
                 temp.append(s[i*j : i*(j+1)])
@@ -40,7 +43,9 @@ def solution(s):
     return answer
 
 
-print(solution(str('a'*5)))
+#print(solution("avdvdavdvds"))
+#print(solution("aaaaaaaaaabbb"))
+#print(solution(str('a'*5)))
 #print(solution(str('a'*10)))  # 3
 #print(solution(str('a'*100)))  # 4
 #print(solution(str('a'*1000)))  # 5
