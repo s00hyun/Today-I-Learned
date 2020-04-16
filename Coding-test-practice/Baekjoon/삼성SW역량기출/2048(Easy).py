@@ -1,6 +1,3 @@
-# 각 step마다 board 정보를 저장하고 있어야 한다
-# 재귀로 다시 짜기
-
 import sys
 from collections import deque
 
