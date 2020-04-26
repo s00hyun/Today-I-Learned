@@ -13,35 +13,53 @@ for i in range(n):
 def count_walkable_roads(_map, _n, _l):
     global answer
     for road in _map:
-        count = 0
-        y = 1
-        for i in range(_n-1):
+        i = 0
+        check = [0]*_n
+        while i < n-1:
             now = road[i]
-            if i < n:
-                after = road[i+1]
-            count += 1
+            next = road[i + 1]
+            diff = now - next
 
-            diff = abs(now-after)
-            if diff == 0:
-                continue
-            elif diff == 1:
-                if count < l:  # 경사로 놓을 수 없음
-                    y = 0
-                    break
-                else:  # 경사로 놓을 수 있음
-                    if after-now == 1:  # 오르막길
-                        count = 0
-                    elif 내리막길:  # ㅠㅠ
-
-
-                    y = 1
-                    count = 0
-            elif diff > 1:
-                y = 0
-                break
-        if y == 1:
-            answer += 1
-            print(road, "can be acrossed")
+            if abs(diff) > 1:
+                break  # 건널 수 없는 길
+            elif diff == 1:  # 내리막길
+                flag = 0
+                for j in range(_l):
+                    if not 0<=i+j+1<n:
+                        flag = 1
+                        break
+                    else:
+                        if road[i+1+j] != next or check[i+1+j]:
+                            flag = 1
+                            break
+                        else:
+                            check[i+1+j] = 1
+                if flag == 1:
+                    break  # 건널 수 없는 길
+                else:
+                    i += _l
+                    if i == n - 1:
+                        answer += 1
+                        #print(road, "is crossable")
+                    continue
+            elif next-now == 1:  # 오르막길
+                    flag = 0
+                    for j in range(_l):
+                        if not (0<=i-j<n):
+                            flag = 1
+                            break
+                        else:
+                            if road[i-j] != now or check[i-j]:
+                                flag = 1
+                                break
+                            else:
+                                check[i-j] = 1
+                    if flag == 1:
+                        break  # 건널 수 없는 길
+            i += 1
+            if i == n-1:
+                answer += 1
+                #print(road, "is crossable")
 
 
 count_walkable_roads(road_map, n , l)
